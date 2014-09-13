@@ -93,7 +93,7 @@ angular.module('fluxApp')
             },
 
             categoriesUpdate: function(categories) {
-                $http.post("/users/:id/categories")
+                $http.post("/api/users/" + currentUser._id + "/categories", {categories: ["transport"]})
                     .success(function() {
                         console.log("categoriile au fost salvate")
                     })

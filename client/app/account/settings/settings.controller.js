@@ -5,8 +5,6 @@ angular.module('fluxApp')
         $scope.errors = {};
 
         $scope.updateCategories = function(categorie) {
-            console.log(categorie);
-            console.log("categories updated");
             Auth.categoriesUpdate(categorie);
         };
 
