@@ -4,9 +4,12 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var NewsSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+    date : Date,
+    category : String,
+    url:String,
+    title:String,
+    content:String,
+    msk:String
 });
 
 module.exports = mongoose.model('News', NewsSchema);
