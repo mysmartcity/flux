@@ -14,7 +14,7 @@
             <h1 class="page-header">Ultimele stiri:</h1>
             <ul class="list-group" ng-repeat="new in news">
                 <li class="list-group-item">
-                    <a ng-href="new.url">
+                    <a href="{{ new.url }}">
                         {{new.title}}
                         <p class="news-content">{{ new.content }}</p>
                     </a>
