@@ -6,6 +6,7 @@ var mandrill_client = new mandrill.Mandrill('vv-cFVrnZHnrCG1fqhKLdQ');
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var frequency = null;
+var newsFilter= null;
 var program = require('commander');
 
 var User = require("../../api/user/user.model");
@@ -23,41 +24,50 @@ program
 
 if (program.daily) {
     frequency = "daily";
+    newsFilter = {date: new Date("2014-09-13T22:36:05.009Z") }
 } else if (program.weekly) {
     frequency = "weekly";
+    newsFilter = {date: {$gt: "One week ago"}}
 } else if (program.monthly) {
     frequency = "monthly";
+    newsFilter = {date: {$gt: "One month ago"}}
 }
+
 console.log("Sending " + frequency + " newsletter.");
 
 if (frequency) {
     // Connect to database
     mongoose.connect(config.mongo.uri, config.mongo.options);
 
-    var a = User.find({}, function (err, users) {
-        var i;
-        for (i=0; i < users.length; i++ ) {
-            if ( users[i].frequencies.indexOf(frequency) !== -1 ) {
 
-                News.find({category: {"$in": users[i].categories}}).exec(function(err, news) {
-                    console.log(users[i])
-//                    console.log(users[i].name + " will receive:");
-//                    console.log(news)
-                });
+    News.find(newsFilter).exec(function(err, news) {
+        console.log(news)
+        User.find({frequencies: frequency}, function (err, users) {
+            for (var i=0 ; i< users.length; i++) {
+                var getTextBody = function() {
+                    var result = "";
+                    for ( var j=0; j< news.length; j++ ) {
+                        // if the user is subscribed to this news category
+                        if (users[i].categories.indexOf( news[j].category ) !== -1) {
+                            result += news[j].title + "\n";
+                        }
+                    }
+                    return result;
+                };
 
+                var params = {
+                    "message": {
+                        "from_email": "newsletter@flux.gov.ro",
+                        "to": [
+                            {"email": users[i].email}
+                        ],
+                        "subject": "Flux " + frequency + " Newsletter " + new Date(),
+                        "text": getTextBody()
+                    }
+                };
 
+                console.log(params);
 
-//                var params = {
-//                    "message": {
-//                        "from_email": "newsletter@flux.gov.ro",
-//                        "to": [
-//                            {"email": users[i].email}
-//                        ],
-//                        "subject": "Flux " + frequency + " Newsletter " + new Date(),
-//                        "text": JSON.stringify(users[i].categories)
-//                    }
-//                };
-//
 //                mandrill_client.messages.send(params,
 //                    function onSuccess(res) {
 //                        console.log(res)
@@ -67,7 +77,7 @@ if (frequency) {
 //                    }
 //                );
             }
-        }
+        });
 
         return;
     });
