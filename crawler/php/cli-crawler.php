@@ -6,6 +6,9 @@
   }
 
   function crawl($sUrl) {
+    global $oMongo;
+    global $oDb;
+
     static $aSeen = array();
     if (isset($aSeen[$sUrl]))
       return;
@@ -33,7 +36,7 @@
 
     //todo: check if the content is new
     //todo: if its not new, then parse it for new data
-    parse($oDom);
+    parse($oDom, $sUrl);
 
     //get all the links from the content and recursively crawl each valid link
     $oAnchors = $oDom->getElementsByTagName('a');
@@ -74,9 +77,12 @@
   }
 
 
-  function parse($oDom) {
+  function parse($oDom, $sSourceUrl) {
+    global $oMongo;
+    global $oDb;
+
     if(!$oDom)
-      return;
+      return [];
 
     $aHeaders = ["h1", "h2", "h3", "h4"];
 
@@ -112,9 +118,15 @@
 
           if($sArticleContent != "") {
             trace("----------------------------");
+            trace("SURSA: {$sSourceUrl}");
             trace("TITLU: {$sArticleTitle}");
             trace("CONTENT: {$sArticleContent}");
             trace("----------------------------");
+          }
+
+          $oCursor = $oDb->news->findOne(['name' => 'test3']);
+          foreach ($oCursor as $stuff) {
+            print_r($stuff);
           }
 
 
@@ -124,5 +136,32 @@
 
   }
 
+
+/* main { */
+  $oMongo = new MongoClient(); // connect
+  $oDb = $oMongo->selectDb("flux");
+  //$oDb->news->insert(['name' => 'test3']);
+
+
   crawl("http://www.mt.ro/");
+/* } main */
+
+//todo
+/*  var NewsSchema = new Schema({
+    category : "transport",
+    Url : "http://google.com",
+  });
+
+[{
+  categoryName: "transport",
+  sites: [
+    ""
+  ]
+},{
+  categoryName: "transport",
+  sites: [
+    ""
+  ]
+}]
+*/
 ?>
