@@ -1,4 +1,4 @@
-## How to install php-cli to run this file:
+## How to install php-cli to run this script:
 ##debian
 sudo apt-get install php5-cli
 
