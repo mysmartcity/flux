@@ -1,9 +1,11 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 thumbnail">
-            <h1>Categorii newsletter</h1>
+        <h1>
+            Setari
+        </h1>
+        <div class="col-sm-12 panel panel-default panel-body">
+            <h2>Categorii newsletter</h2>
             <form class="form" name="form" ng-submit="updateCategories(categorie)" novalidate>
                 <div class="checkbox">
                     <label>
@@ -19,23 +21,22 @@
                 <button class="btn btn-lg btn-primary" type="submit">Salveaza categoriile</button>
             </form>
         </div>
-
-        <div class="col-sm-12 thumbnail">
-            <h1>Frecventa notificarilor</h1>
+        <div class="col-sm-12 panel panel-default panel-body">
+            <h2>Frecventa notificarilor</h2>
             <form class="form" name="form" ng-submit="updateFrequency(frequency)" novalidate>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.daily">Zilnic
+                        <input type="radio" ng-model="frequency.daily" value="Zilnic">Zilnic
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.weekly">Saptamanal
+                        <input type="radio" ng-model="frequency.weekly" value="Saptamanal">Saptamanal
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.monthly">Lunar
+                        <input type="radio" ng-model="frequency.monthly" value="Lunar">Lunar
                     </label>
                 </div>
                 <p class="help-block"> {{ message }} </p>
@@ -43,8 +44,8 @@
             </form>
         </div>
 
-        <div class="col-sm-12 thumbnail">
-            <h1>Schimbare parola</h1>
+        <div class="col-sm-12 panel panel-default panel-body">
+            <h2>Schimbare parola</h2>
             <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 
                 <div class="form-group">

@@ -10,13 +10,21 @@
 
 <div class="container">
     <div class="col-lg-12">
-        <h1 class="page-header">Ultimele stiri:</h1>
-        <a ng-href="new.url" class="new-articol" ng-repeat="new in news">
-            {{new.title}}
-            <p class="news-content">{{ new.content }}</p>
-        </a>
+        <h1 class="page-header">
+            Ultimele stiri:
+        </h1>
+        <div class="new-articol" ng-repeat="new in news">
+            <h2>
+                {{new.title}}
+            </h2>
+            <p>
+                {{ new.content }}
+            </p>
+                <h3>
+                    Afiseaza stirea
+                </h3>
+        </div>
     </div>
-</div>
 </div>
 
 <footer class="footer">
