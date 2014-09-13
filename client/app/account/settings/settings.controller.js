@@ -5,7 +5,26 @@ angular.module('fluxApp')
         $scope.errors = {};
 
         $scope.updateCategories = function(categorie) {
-            Auth.categoriesUpdate(categorie);
+            var data = [];
+
+            for (var cat in categorie) {
+                if (categorie[cat] === true) {
+                    data.push(cat);
+                }
+            }
+            Auth.categoriesUpdate(cat);
+        };
+
+        $scope.updateFrequency = function(frequencies) {
+            var data = [];
+
+            for (var cat in frequencies) {
+                if (frequencies[cat] === true) {
+                    data.push(cat);
+                }
+            }
+
+            Auth.frequenciesUpdate(data);
         };
 
         $scope.changePassword = function(form) {
