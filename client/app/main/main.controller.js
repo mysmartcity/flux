@@ -2,12 +2,14 @@
 
 angular.module('fluxApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+//    $http.get('/api/news').success(function(awesomeThings) {
+      $scope.news = [
+          {date: new Date(2014, 9, 12), category: "transport", url: "www.mt.ro/stiri/anunt.html",title: "Ministerul transporturilor",content: "stire ne spune ca ..."},
+          {date: new Date(2014, 9, 13), category: "sport", url: "www.mts.ro/stiri/comunicat.html",title: "Anunt sportiv",content: "eveniment in cadrul festivitatii sportive"}
+      ];
+//      socket.syncUpdates('thing', $scope.awesomeThings);
+//    });
 
     $scope.addThing = function() {
       if($scope.newThing === '') {
