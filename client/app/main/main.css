@@ -31,3 +31,15 @@
 .news-content {
     color: #000;
 }
+/* flux */
+
+/* general css */
+h1 {
+    font-size: 24px;
+}
+.list-group .list-group-item:nth-child(1) {
+    margin-right:10px
+}
+.list-group .list-group-item:nth-child(3) {
+    margin-right: 0;
+}
