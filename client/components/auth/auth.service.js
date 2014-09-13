@@ -93,12 +93,22 @@ angular.module('fluxApp')
             },
 
             categoriesUpdate: function(categories) {
-                $http.post("/api/users/" + currentUser._id + "/categories", {categories: ["transport"]})
+                $http.post("/api/users/" + currentUser._id + "/categories", {categories: categories})
                     .success(function() {
                         console.log("categoriile au fost salvate")
                     })
                     .error(function() {
                         console.error("Caegories have not been saved")
+                    });
+            },
+
+            frequenciesUpdate: function(frequency) {
+                $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
+                    .success(function() {
+                        console.log("frecventa a fost salvata");
+                    })
+                    .error(function() {
+                        console.error("Frecventa nu a fost salvata");
                     });
             },
 
