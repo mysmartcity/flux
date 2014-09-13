@@ -32,14 +32,49 @@
     color: #000;
 }
 /* flux */
-
-/* general css */
 h1 {
     font-size: 24px;
 }
-.list-group .list-group-item:nth-child(1) {
-    margin-right:10px
+* {
+    border-radius: 0!important;
 }
-.list-group .list-group-item:nth-child(3) {
-    margin-right: 0;
+.page-header {
+    margin: 30px 7px 20px 7px!important;
+    padding-bottom:4px;
+    border-color: #cccccc;
+}
+.new-articol {
+    width: 356px;
+    float: left;
+    max-height: 400px;
+    height: 100px;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    margin: 0 7px 14px 7px;
+    -webkit-box-shadow: 0 6px 6px -6px #aaaaaa;
+    -moz-box-shadow: 0 6px 6px -6px #aaaaaa;
+    box-shadow: 0 6px 6px -6px #aaaaaa;
+    -webkit-transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
+    transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
+}
+.new-articol:hover {
+    border-color: #2a6496;
+    cursor: pointer;
+    -webkit-box-shadow: 0 6px 6px -6px #2a6496;
+    -moz-box-shadow: 0 6px 6px -6px #2a6496;
+    box-shadow: 0 6px 6px -6px #2a6496;
+
+}
+.new-articol:hover a {
+    color: #2a6496;
+    text-decoration: underline;
+}
+.new-articol:hover a p {
+
+}
+.new-articol a {
+    font-weight: bold;
+}
+.new-articol a p {
+    font-weight: 100;
 }
