@@ -99,3 +99,42 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+function getFiled(req, res, next, field){
+    //TODO change params.id with the actual id added by auth module
+    User.findById(req.params.id, field, function(err, data){
+        if (err) return next(err);
+        res.send(200, data);
+    });
+}
+
+function setFiled(req, res, next, field){
+    var toUpdate = {};
+    toUpdate[field] = req.body[field];
+    //TODO change params.id with the actual id added by auth module
+    User.findByIdAndUpdate(req.params.id, toUpdate, function(err, data){
+        if (err) return next(err);
+        res.send(200, data);
+    });
+    res.send(200);
+}
+
+exports.updateCategories = function (req, res, next) {
+    setFiled(req, res, next, 'categories')
+};
+exports.getCategories = function (req, res, next) {
+    getFiled(req, res, next, 'categories')
+};
+exports.updateFrequencies = function (req, res, next) {
+    setFiled(req, res, next, 'frequencies')
+};
+exports.getFrequencies = function (req, res, next) {
+    getFiled(req, res, next, 'frequencies')
+};
+
+
+
+
+
+
+

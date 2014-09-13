@@ -9,9 +9,9 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var News = require('../api/news/news.model');
 /*News.find({}).remove(function(){
-    console.log("done removing");
-});
-return;*/
+ console.log("done removing");
+ });
+ return;*/
 News.find(function(err, existingNews){
     if (existingNews == ''){
         News.create({
@@ -55,20 +55,33 @@ News.find(function(err, existingNews){
 });
 
 
-User.find({}).remove(function() {
-    User.create({
-            provider: 'local',
-            name: 'Test User',
-            email: 'test@test.com',
-            password: 'test'
-        }, {
-            provider: 'local',
-            role: 'admin',
-            name: 'Admin',
-            email: 'admin@admin.com',
-            password: 'admin'
-        }, function() {
-            console.log('finished populating users');
-        }
-    );
+/*User.find({}).remove(function(){
+ console.log("done removing");
+ });
+ */
+
+User.find(function(err, existingNews){
+    if (existingNews == ''){
+        User.create({
+                provider: 'local',
+                name: 'Test User',
+                email: 'test@test.com',
+                password: 'test',
+                categories: ['transport'],
+                frequencies:['day', 'month']
+            }, {
+                provider: 'local',
+                role: 'admin',
+                name: 'Admin',
+                email: 'admin@admin.com',
+                password: 'admin',
+                categories: ['transport', 'tineret'],
+                frequencies:['day', 'year']
+            }, function() {
+                console.log('finished populating users');
+            }
+        );
+    }else{
+        console.log('users were already created');
+    }
 });
