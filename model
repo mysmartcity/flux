@@ -6,4 +6,5 @@
     url: "www.mts.ro/stiri/anunt.html", 
     title: "Ministerul tr",
     content: "stire ne spune ca ...",
+    msk: ["sala", "guvern", "apel", "primarie", "test"]
 })
