@@ -5,7 +5,7 @@ angular.module('fluxApp')
         $scope.errors = {};
 
         $scope.updateCategories = function(categorie) {
-            console.log("categories updated")
+            Auth.categoriesUpdate(categorie);
         };
 
         $scope.changePassword = function(form) {

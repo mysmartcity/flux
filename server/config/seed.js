@@ -8,10 +8,10 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var News = require('../api/news/news.model');
-/*News.find({}).remove(function(){
-    console.log("done removing");
+News.find({}).remove(function(){
+console.log("done removing");
 });
-return;*/
+//return;
 News.find(function(err, existingNews){
     if (existingNews == ''){
         News.create({
@@ -45,7 +45,39 @@ News.find(function(err, existingNews){
                 title:"articol tineret 1",
                 content:"articol1",
                 msk: "anMks"
-            }, function() {
+            },{
+                date : new Date(2014,1,2),
+                category : "transport",
+                url:"not yet",
+                title:"Drum in constructie0",
+                content:"se lucreaza de zor0",
+                msk: "anMks"
+            },
+            {
+                date : new Date(2014,1,3),
+                category : "transport",
+                url:"not yet",
+                title:"Drum in constructie3",
+                content:"se lucreaza de zor la apaosdap alskdal sdkas dkaskjdasbsa akjadskabsbaskbdakb  jasbdh as j",
+                msk: "anMks"
+            },
+            {
+                date : new Date(2014,1,4),
+                category : "tineret",
+                url:"not yet",
+                title:"articol tineret asdasdaj kasj a jda vdsav das adv da vv sja",
+                content:"articol 0",
+                msk: "anMks"
+            },
+            {
+                date : new Date(2014,1,5),
+                category : "tineret",
+                url:"not yet",
+                title:"articol tineret 1",
+                content:"articol1  askbdab kb daab a sdhj hadj hdas hjdsbhj saaadb hjdas hjdas ",
+                msk: "anMks"
+            }
+            , function() {
                 console.log('finished populating news');
             }
         )
@@ -55,20 +87,33 @@ News.find(function(err, existingNews){
 });
 
 
-User.find({}).remove(function() {
-    User.create({
-            provider: 'local',
-            name: 'Test User',
-            email: 'test@test.com',
-            password: 'test'
-        }, {
-            provider: 'local',
-            role: 'admin',
-            name: 'Admin',
-            email: 'admin@admin.com',
-            password: 'admin'
-        }, function() {
-            console.log('finished populating users');
-        }
-    );
+/*User.find({}).remove(function(){
+ console.log("done removing");
+ });
+ */
+
+User.find(function(err, existingNews){
+    if (existingNews == ''){
+        User.create({
+                provider: 'local',
+                name: 'Test User',
+                email: 'test@test.com',
+                password: 'test',
+                categories: ['transport'],
+                frequencies:['day', 'month']
+            }, {
+                provider: 'local',
+                role: 'admin',
+                name: 'Admin',
+                email: 'admin@admin.com',
+                password: 'admin',
+                categories: ['transport', 'tineret'],
+                frequencies:['day', 'year']
+            }, function() {
+                console.log('finished populating users');
+            }
+        );
+    }else{
+        console.log('users were already created');
+    }
 });
