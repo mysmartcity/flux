@@ -34,16 +34,14 @@
 /* flux */
 h1 {
     font-size: 24px;
-    padding-bottom:4px;
-    border-bottom: 1px solid #cccccc;
 }
 * {
     border-radius: 0!important;
 }
-.page-header {
+.main-page-header {
     margin: 30px 10px 20px 10px!important;
     padding-bottom:4px;
-    border-color: #cccccc;
+    border-bottom: 1px solid #cccccc;
 }
 .new-articol {
     width: 350px;
@@ -102,4 +100,8 @@ h1 {
 }
 .new-articol:hover h3{
     display: block;
+}
+.page-header {
+    padding-bottom:4px;
+    border-color: #cccccc;
 }
