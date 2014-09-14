@@ -165,9 +165,9 @@
                 'date'      => date('l jS \of F Y h:i:s A'),
                 'category'  => $sCategory,
                 'url'       => $sSourceUrl,
-                'title'     => json_encode($sArticleTitle),
-                'content'   => json_encode($sArticleContent),
-                'msk'       => json_encode(implode(",", $aKeywords))
+                'title'     => encodingCleanup($sArticleTitle),
+                'content'   => encodingCleanup($sArticleContent),
+                'msk'       => encodingCleanup(implode(",", $aKeywords))
               ]);
             }
 
@@ -180,7 +180,13 @@
   }
 
 
- 
+  function encodingCleanup($sString) {
+    $sString = json_encode($sString);
+    $sString = substr($sString, 1);
+    $sString = substr($sString, 0, -1);
+    
+    return $sString;
+  }
 
 /* main { */
   $oMongo = new MongoClient(); // connect
