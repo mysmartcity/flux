@@ -24,7 +24,8 @@ program
 
 if (program.daily) {
     frequency = "daily";
-    newsFilter = {date: new Date() }
+//    newsFilter = {date: new Date() }
+    newsFilter = {date: new Date(2014,1,4) }
 } else if (program.weekly) {
     frequency = "weekly";
     var oneWeekAgo = new Date();
@@ -47,7 +48,6 @@ if (frequency) {
     News.find(newsFilter).exec(function(err, news) {
         console.log(news);
         User.find({frequencies: frequency}, function (err, users) {
-            console.log(users)
             for (var i=0 ; i< users.length; i++) {
                 var getTextBody = function() {
                     var result = "";
@@ -66,6 +66,9 @@ if (frequency) {
                 var mailMessage = getTextBody();
 
                 if (mailMessage !== "") {
+
+                    console.log("Sending mail to ", users[i].email);
+
                     var params = {
                         "message": {
                             "from_email": "newsletter@flux.gov.ro",
@@ -73,7 +76,7 @@ if (frequency) {
                                 {"email": users[i].email}
                             ],
                             "subject": "Flux " + frequency + " Newsletter " + new Date(),
-                            "text": mailMessage
+                            "html": mailMessage
                         }
                     };
 

@@ -24,21 +24,9 @@
         <div class="col-sm-12 panel panel-default panel-body">
             <h2>Frecventa notificarilor</h2>
             <form class="form" name="form" ng-submit="updateFrequency(frequency)" novalidate>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.daily" value="Zilnic">Zilnic
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.weekly" value="Saptamanal">Saptamanal
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.monthly" value="Lunar">Lunar
-                    </label>
-                </div>
+                <input type="radio" name="frequency" ng-model="frequency.daily" value=true>Zilnic <br/>
+                <input type="radio" name="frequency" ng-model="frequency.weekly" value=true>Saptamanal <br/>
+                <input type="radio" name="frequency" ng-model="frequency.monthly" value=true>Lunar
                 <p class="help-block"> {{ message }} </p>
                 <button class="btn btn-lg btn-primary" type="submit">Salveaza frecventa</button>
             </form>

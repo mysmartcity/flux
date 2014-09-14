@@ -17,7 +17,7 @@ News.find(function(err, existingNews){
         News.create({
                 date : new Date(),
                 category : "transport",
-                url:"not yet",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"Drum in constructie0",
                 content:"se lucreaza de zor0",
                 msk: "anMks"
@@ -25,7 +25,7 @@ News.find(function(err, existingNews){
             {
                 date : new Date(),
                 category : "transport",
-                url:"not yet",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"Drum in constructie1",
                 content:"se lucreaza de zor1",
                 msk: "anMks"
@@ -33,22 +33,22 @@ News.find(function(err, existingNews){
             {
                 date : new Date(),
                 category : "tineret",
-                url:"not yet",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"articol tineret 0",
                 content:"articol 0",
                 msk: "anMks"
             },
             {
                 date : new Date(2014,7,29),
-                category : "tineret",
-                url:"not yet",
+                category : "youth",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"articol tineret 1",
                 content:"articol1",
                 msk: "anMks"
             },{
                 date : new Date(2014,1,2),
                 category : "transport",
-                url:"not yet",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"Drum in constructie0",
                 content:"se lucreaza de zor0",
                 msk: "anMks"
@@ -56,23 +56,23 @@ News.find(function(err, existingNews){
             {
                 date : new Date(2014,1,3),
                 category : "transport",
-                url:"not yet",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"Drum in constructie3",
                 content:"se lucreaza de zor la apaosdap alskdal sdkas dkaskjdasbsa akjadskabsbaskbdakb  jasbdh as j",
                 msk: "anMks"
             },
             {
                 date : new Date(2014,1,4),
-                category : "tineret",
-                url:"not yet",
+                category : "youth",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"articol tineret asdasdaj kasj a jda vdsav das adv da vv sja",
                 content:"articol 0",
                 msk: "anMks"
             },
             {
-                date : new Date(2014,1,5),
-                category : "tineret",
-                url:"not yet",
+                date : new Date(2014,1,4),
+                category : "youth",
+                url:"http://www.mt.ro/web14/spatiul-media/evenimente/532-ministrul-transporturilor-ioan-rus-a-acordat-in-data-de-27-august-2014-un-interviu-pentru-adevarul-online",
                 title:"articol tineret 1",
                 content:"articol1  askbdab kb daab a sdhj hadj hdas hjdsbhj saaadb hjdas hjdas ",
                 msk: "anMks"
