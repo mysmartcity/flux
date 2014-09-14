@@ -201,9 +201,15 @@
           ]
         ],
         [
-          'category' => 'sanatate',
+          'category' => 'health',
           'sources' => [
-            'url' => 'http://www.ms.ro/'
+            'http://www.ms.ro/'
+          ]
+        ],
+        [
+          'category' => 'youth',
+          'sources' => [
+            'http://www.mts.ro/'
           ]
         ]
         //etc
