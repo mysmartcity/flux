@@ -3,6 +3,16 @@
 angular.module('fluxApp')
     .controller('SettingsCtrl', function ($scope, User, Auth) {
         $scope.errors = {};
+        $scope.categorie = {};
+        $scope.frequency = 'daily';
+        var i, currentUser = Auth.getCurrentUser();
+
+        for (i in currentUser.categories){
+            $scope.categorie[currentUser.categories[i]] = true;
+        }
+        for (i in currentUser.frequencies){
+            $scope.frequency = currentUser.frequencies[i];
+        }
 
         $scope.updateCategories = function(categorie) {
             var data = [];
@@ -12,21 +22,15 @@ angular.module('fluxApp')
                     data.push(cat);
                 }
             }
-            Auth.categoriesUpdate(cat);
+            Auth.categoriesUpdate(data).success(function(){
+                $('#notify').html("Noile categorii au fost salvate").show().fadeOut(2000);
+            });
         };
 
-        $scope.updateFrequency = function(frequencies) {
-            var data = [];
-
-            console.log(frequencies)
-
-            for (var cat in frequencies) {
-                if (frequencies[cat] === "true") {
-                    data.push(cat);
-                }
-            }
-
-            Auth.frequenciesUpdate(data);
+        $scope.updateFrequency = function() {
+            Auth.frequenciesUpdate($scope.frequency).success(function(){
+                $('#notify').html("Frecventa la care doriti sa fiti notificati a fost salvata").show().fadeOut(2000);
+            });;
         };
 
         $scope.changePassword = function(form) {

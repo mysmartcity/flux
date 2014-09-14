@@ -1,5 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="container">
+    <div id="notify" class="alert alert-success" style="display:none; position: fixed; left: 39%; padding:8px; top: 0;z-index: 1001"></div>
     <div class="row">
         <h1 class="page-header">
             Setari
@@ -24,9 +25,9 @@
         <div class="col-sm-12 thumbnail">
             <h2>Frecventa notificarilor</h2>
             <form name="form" ng-submit="updateFrequency(frequency)" novalidate>
-                <input type="radio" ng-model="frequency.daily" value="true" name="daily" />Zilnic <br/>
-                <input type="radio" ng-model="frequency.weekly" value="true" name="daily" />Saptamanal <br/>
-                <input type="radio" ng-model="frequency.monthly" value="true" name="daily" />Lunar <br/>
+                <input type="radio" ng-model="frequency" value="daily" name="daily" />Zilnic <br/>
+                <input type="radio" ng-model="frequency" value="weekly" name="weekly" />Saptamanal <br/>
+                <input type="radio" ng-model="frequency" value="monthly" name="monthly" />Lunar <br/>
                 <button class="btn btn-primary" type="submit">Salveaza frecventa</button>
             </form>
         </div>

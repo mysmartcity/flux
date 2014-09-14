@@ -93,7 +93,7 @@ angular.module('fluxApp')
             },
 
             categoriesUpdate: function(categories) {
-                $http.post("/api/users/" + currentUser._id + "/categories", {categories: categories})
+                return $http.post("/api/users/" + currentUser._id + "/categories", {categories: categories})
                     .success(function() {
                         console.log("categoriile au fost salvate")
                     })
@@ -101,9 +101,8 @@ angular.module('fluxApp')
                         console.error("Caegories have not been saved")
                     });
             },
-
             frequenciesUpdate: function(frequency) {
-                $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
+                return $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
                     .success(function() {
                         console.log("frecventa a fost salvata");
                     })
@@ -111,7 +110,6 @@ angular.module('fluxApp')
                         console.error("Frecventa nu a fost salvata");
                     });
             },
-
             /**
              * Gets all available info on authenticated user
              *

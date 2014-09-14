@@ -110,7 +110,14 @@ function getFiled(req, res, next, field){
 
 function setFiled(req, res, next, field){
     var toUpdate = {};
-    toUpdate[field] = req.body[field];
+
+    if (req.body[field]){
+        toUpdate[field] = req.body[field];
+    }else{
+        toUpdate[field] = [];
+    }
+    console.log(JSON.stringify(toUpdate));
+
     //TODO change params.id with the actual id added by auth module
     User.findByIdAndUpdate(req.params.id, toUpdate, function(err, data){
         if (err) return next(err);
