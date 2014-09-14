@@ -28,7 +28,7 @@ angular.module('fluxApp')
         };
 
         $scope.updateFrequency = function() {
-            Auth.frequenciesUpdate($scope.frequency).success(function(){
+            Auth.frequenciesUpdate([$scope.frequency]).success(function(){
                 $('#notify').html("Frecventa la care doriti sa fiti notificati a fost salvata").show().fadeOut(2000);
             });;
         };
