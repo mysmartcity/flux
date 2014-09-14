@@ -160,12 +160,18 @@ label {
     .new-articol h2 {
         width: 281px;
     }
+    .new-articol span {
+        width: 283px;
+    }
 }
 @media (max-width: 991px) {
     .new-articol {
         width: 325px;
     }
     .new-articol h2 {
+        width: 323px;
+    }
+    .new-articol span {
         width: 323px;
     }
 }
