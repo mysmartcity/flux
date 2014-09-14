@@ -22,20 +22,20 @@
 
         <div class="col-sm-12 thumbnail">
             <h1>Frecventa notificarilor</h1>
-            <form class="form" name="form" ng-submit="updateFrequency(frequency)" novalidate>
+            <form name="form" ng-submit="updateFrequency(frequency)" novalidate>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.daily">Zilnic
+                        <input type="radio" ng-model="frequency.daily" value="Zilnic" />Zilnic
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.weekly">Saptamanal
+                        <input type="radio" ng-model="frequency.weekly" value="Saptamanal" />Saptamanal
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="frequency.monthly">Lunar
+                        <input type="radio" ng-model="frequency.monthly" value="Lunar" />Lunar
                     </label>
                 </div>
                 <p class="help-block"> {{ message }} </p>

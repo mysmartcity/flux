@@ -56,6 +56,8 @@ h1 {
     box-shadow: 0 6px 6px -6px #aaaaaa;
     -webkit-transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
     transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
+    font-weight: bold;
+    font-size: 14px;
 }
 .new-articol:hover {
     border-color: #2a6496;
@@ -63,18 +65,11 @@ h1 {
     -webkit-box-shadow: 0 6px 6px -6px #2a6496;
     -moz-box-shadow: 0 6px 6px -6px #2a6496;
     box-shadow: 0 6px 6px -6px #2a6496;
-
-}
-.new-articol:hover a {
     color: #2a6496;
-    text-decoration: underline;
-}
-.new-articol:hover a p {
+    text-decoration: none;
 
 }
-.new-articol a {
-    font-weight: bold;
-}
-.new-articol a p {
+.new-articol p {
     font-weight: 100;
+    font-size: 12px;
 }
