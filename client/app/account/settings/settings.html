@@ -24,25 +24,9 @@
         <div class="col-sm-12 thumbnail">
             <h2>Frecventa notificarilor</h2>
             <form name="form" ng-submit="updateFrequency(frequency)" novalidate>
-                <div class="radio">
-                <label>
-                    <input type="radio" ng-model="frequency.daily" value="Zilnic" id="zilnic" name="zilnic" />
-                    Zilnic
-                </label>
-                </div>
-                <div class="radio">
-                <label>
-                    <input type="radio" ng-model="frequency.weekly" value="Saptamanal" id="saptamanal" name="saptamanal" />
-                    Saptamanal
-                </label>
-                </div>
-                <div class="radio">
-                <label>
-                    <input type="radio" ng-model="frequency.monthly" value="Lunar" id="lunar" name="lunar" />
-                    Lunar
-                </label>
-                </div>
-                <p class="help-block"> {{ message }} </p>
+                <input type="radio" ng-model="frequency.daily" value="true" name="daily" />Zilnic <br/>
+                <input type="radio" ng-model="frequency.weekly" value="true" name="daily" />Saptamanal <br/>
+                <input type="radio" ng-model="frequency.monthly" value="true" name="daily" />Lunar <br/>
                 <button class="btn btn-primary" type="submit">Salveaza frecventa</button>
             </form>
         </div>
