@@ -5,7 +5,7 @@ var News = require('./news.model');
 
 // Get list of newss
 exports.index = function(req, res) {
-  News.find(function (err, newss) {
+  News.find({},{} , { limit : 20 }, function (err, newss) {
     if(err) { return handleError(res, err); }
     return res.json(200, newss);
   });
