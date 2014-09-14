@@ -12,19 +12,18 @@
         <h1 class="main-page-header">
             Ultimele stiri:
         </h1>
-        <div class="new-articol" ng-repeat="new in news">
+        <div class="new-articol" ng-repeat="new in news" ng-click="openNewsURL(new.url)">
             <h2>
-                titlu bla bla
+                {{new.title}}
             </h2>
             <p>
-                content bla bla
+                {{ new.content }}
             </p>
-            <h3>
-                Afiseaza stirea
-            </h3>
+                <h3>
+                    Afiseaza stirea
+                </h3>
         </div>
     </div>
-</div>
 </div>
 
 <footer class="footer">
