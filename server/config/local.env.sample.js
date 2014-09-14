@@ -6,15 +6,15 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN:           'http://localhost:9000',
-  SESSION_SECRET:   'flux-secret',
+    DOMAIN:           'http://localhost:9000',
+    SESSION_SECRET:   'flux-secret',
 
-  FACEBOOK_ID:      'app-id',
-  FACEBOOK_SECRET:  'secret',
+    FACEBOOK_ID: '746545382074467',
+    FACEBOOK_SECRET: 'cadf48c395a28928c028f60e97b7b1e0',
 
-  GOOGLE_ID:        'app-id',
-  GOOGLE_SECRET:    'secret',
+    GOOGLE_ID:        'app-id',
+    GOOGLE_SECRET:    'secret',
 
-  // Control debug level for modules using visionmedia/debug
-  DEBUG: ''
+    // Control debug level for modules using visionmedia/debug
+    DEBUG: ''
 };
