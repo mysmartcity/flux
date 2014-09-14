@@ -4,7 +4,7 @@
         <h1 class="page-header">
             Setari
         </h1>
-        <div class="col-sm-12 panel panel-default panel-body">
+        <div class="col-sm-12 thumbnail">
             <h2>Categorii newsletter</h2>
             <form class="form" name="form" ng-submit="updateCategories(categorie)" novalidate>
                 <div class="checkbox">
@@ -18,62 +18,54 @@
                     </label>
                 </div>
                 <p class="help-block"> {{ message }} </p>
-                <button class="btn btn-lg btn-primary" type="submit">Salveaza categoriile</button>
+                <button class="btn btn-primary" type="submit">Salveaza categoriile</button>
             </form>
         </div>
-<<<<<<< HEAD
-
         <div class="col-sm-12 thumbnail">
-            <h1>Frecventa notificarilor</h1>
-            <form name="form" ng-submit="updateFrequency(frequency)" novalidate>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.daily" value="Zilnic" />Zilnic
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.weekly" value="Saptamanal" />Saptamanal
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" ng-model="frequency.monthly" value="Lunar" />Lunar
-                    </label>
-                </div>
-=======
-        <div class="col-sm-12 panel panel-default panel-body">
             <h2>Frecventa notificarilor</h2>
-            <form class="form" name="form" ng-submit="updateFrequency(frequency)" novalidate>
-                <input type="radio" name="frequency" ng-model="frequency.daily" value=true>Zilnic <br/>
-                <input type="radio" name="frequency" ng-model="frequency.weekly" value=true>Saptamanal <br/>
-                <input type="radio" name="frequency" ng-model="frequency.monthly" value=true>Lunar
->>>>>>> 6c262a51843085661ab84270d4e65f5539d86b2a
+            <form name="form" ng-submit="updateFrequency(frequency)" novalidate>
+                <div class="radio">
+                <label>
+                    <input type="radio" ng-model="frequency.daily" value="Zilnic" id="zilnic" name="zilnic" />
+                    Zilnic
+                </label>
+                </div>
+                <div class="radio">
+                <label>
+                    <input type="radio" ng-model="frequency.weekly" value="Saptamanal" id="saptamanal" name="saptamanal" />
+                    Saptamanal
+                </label>
+                </div>
+                <div class="radio">
+                <label>
+                    <input type="radio" ng-model="frequency.monthly" value="Lunar" id="lunar" name="lunar" />
+                    Lunar
+                </label>
+                </div>
                 <p class="help-block"> {{ message }} </p>
-                <button class="btn btn-lg btn-primary" type="submit">Salveaza frecventa</button>
+                <button class="btn btn-primary" type="submit">Salveaza frecventa</button>
             </form>
         </div>
-
-        <div class="col-sm-12 panel panel-default panel-body">
+        <div class="col-sm-12 thumbnail">
             <h2>Schimbare parola</h2>
             <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
-
                 <div class="form-group">
-                    <label>Parola curenta</label>
-
+                    <label for="current-pass">Parola curenta
                     <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                           mongoose-error/>
+                           id="current-pass" mongoose-error/>
+                    </label>
                     <p class="help-block" ng-show="form.password.$error.mongoose">
                         {{ errors.other }}
                     </p>
                 </div>
 
                 <div class="form-group">
-                    <label>Parola noua</label>
+                    <label for="new-pass">Parola noua
 
                     <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                           ng-minlength="3"
+                          id="new-pass" ng-minlength="3"
                            required/>
+                    </label>
                     <p class="help-block"
                        ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
                         Password must be at least 3 characters.
@@ -82,8 +74,15 @@
 
                 <p class="help-block"> {{ message }} </p>
 
-                <button class="btn btn-lg btn-primary" type="submit">Salveaza parola</button>
+                <button class="btn btn-primary" type="submit">Salveaza parola</button>
             </form>
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p>Flux.gov.ro 2014</p>
+    </div>
+</footer>
+

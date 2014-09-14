@@ -35,6 +35,16 @@
 h1 {
     font-size: 24px;
 }
+h2 {
+    font-size: 20px;
+    padding: 0 0 10px 0;
+    margin: 0;
+    color: #333333;
+}
+label {
+    display: block;
+    font-weight: normal;
+}
 * {
     border-radius: 0!important;
 }
@@ -54,14 +64,11 @@ h1 {
     box-shadow: 0 6px 6px -6px #aaaaaa;
     -webkit-transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
     transition: border-color ease-in-out .25s, box-shadow ease-in-out .25s;
-<<<<<<< HEAD
     font-weight: bold;
     font-size: 14px;
-=======
     color: #555555;
     display: inline-table;
     position: relative;
->>>>>>> 6c262a51843085661ab84270d4e65f5539d86b2a
 }
 .new-articol:hover {
     border-color: #4393B9;
@@ -69,7 +76,6 @@ h1 {
     -webkit-box-shadow: 0 6px 6px -6px #2a6496;
     -moz-box-shadow: 0 6px 6px -6px #2a6496;
     box-shadow: 0 6px 6px -6px #2a6496;
-<<<<<<< HEAD
     color: #2a6496;
     text-decoration: none;
 
@@ -77,7 +83,6 @@ h1 {
 .new-articol p {
     font-weight: 100;
     font-size: 12px;
-=======
     color: #333333;
 }
 .new-articol h2 {
@@ -107,10 +112,6 @@ h1 {
     display: none;
     bottom: -10px;
     font-size: 12px;
-    -webkit-transition-timing-function: steps(4, start);
-    -moz-transition-timing-function: steps(4, start);
-    -o-transition-timing-function: steps(4, start);
-    transition-timing-function: steps(4, start);
 }
 .new-articol:hover h3{
     display: block;
@@ -118,5 +119,13 @@ h1 {
 .page-header {
     padding-bottom:4px;
     border-color: #cccccc;
->>>>>>> 6c262a51843085661ab84270d4e65f5539d86b2a
+}
+.thumbnail {
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 0 20px 0;
+    margin-bottom: 10px;
+}
+.thumbnail:last-child {
+    border: none;
 }
