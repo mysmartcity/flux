@@ -13,7 +13,7 @@ console.log("done removing");
 });
 //return;
 News.find(function(err, existingNews){
-    if (existingNews == ''){
+//    if (existingNews === '' || existingNews === []){
         News.create({
                 date : new Date(),
                 category : "transport",
@@ -39,7 +39,7 @@ News.find(function(err, existingNews){
                 msk: "anMks"
             },
             {
-                date : new Date(),
+                date : new Date(2014,7,29),
                 category : "tineret",
                 url:"not yet",
                 title:"articol tineret 1",
@@ -80,10 +80,10 @@ News.find(function(err, existingNews){
             , function() {
                 console.log('finished populating news');
             }
-        )
-    }else{
-        console.log("news already populated");
-    }
+        );
+//    }else{
+//        console.log("news already populated");
+//    }
 });
 
 

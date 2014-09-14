@@ -24,13 +24,17 @@ program
 
 if (program.daily) {
     frequency = "daily";
-    newsFilter = {date: new Date("2014-09-13T22:36:05.009Z") }
+    newsFilter = {date: new Date() }
 } else if (program.weekly) {
     frequency = "weekly";
-    newsFilter = {date: {$gt: "One week ago"}}
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    newsFilter = {date: {$gt: oneWeekAgo}}
 } else if (program.monthly) {
     frequency = "monthly";
-    newsFilter = {date: {$gt: "One month ago"}}
+    var oneMonthAgo = new Date();
+    oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
+    newsFilter = {date: {$gt: oneMonthAgo}}
 }
 
 console.log("Sending " + frequency + " newsletter.");
@@ -41,41 +45,51 @@ if (frequency) {
 
 
     News.find(newsFilter).exec(function(err, news) {
-        console.log(news)
+        console.log(news);
         User.find({frequencies: frequency}, function (err, users) {
+            console.log(users)
             for (var i=0 ; i< users.length; i++) {
                 var getTextBody = function() {
                     var result = "";
                     for ( var j=0; j< news.length; j++ ) {
                         // if the user is subscribed to this news category
                         if (users[i].categories.indexOf( news[j].category ) !== -1) {
-                            result += news[j].title + "\n";
+                            result += "<a href='" + news[j].url + "'>" +
+                                "<h3>" + news[j].title + "<h3>" +
+                                "<p>" + news[j].content + "</p>" +
+                                "</a>";
                         }
                     }
                     return result;
                 };
 
-                var params = {
-                    "message": {
-                        "from_email": "newsletter@flux.gov.ro",
-                        "to": [
-                            {"email": users[i].email}
-                        ],
-                        "subject": "Flux " + frequency + " Newsletter " + new Date(),
-                        "text": getTextBody()
-                    }
-                };
+                var mailMessage = getTextBody();
 
-                console.log(params);
+                if (mailMessage !== "") {
+                    var params = {
+                        "message": {
+                            "from_email": "newsletter@flux.gov.ro",
+                            "to": [
+                                {"email": users[i].email}
+                            ],
+                            "subject": "Flux " + frequency + " Newsletter " + new Date(),
+                            "text": mailMessage
+                        }
+                    };
 
-//                mandrill_client.messages.send(params,
-//                    function onSuccess(res) {
-//                        console.log(res)
-//                    },
-//                    function onError(err) {
-//                        console.log(err);
-//                    }
-//                );
+                    console.log(params);
+
+                    mandrill_client.messages.send(params,
+                        function onSuccess(res) {
+//                            console.log(res)
+                            console.log("Mail sent successfully!")
+                        },
+                        function onError(err) {
+                            console.log(err);
+                        }
+                    );
+                }
+
             }
         });
 
