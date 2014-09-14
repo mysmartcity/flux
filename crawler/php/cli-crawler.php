@@ -1,4 +1,5 @@
 <?php
+  error_reporting(E_ALL & ~E_NOTICE);
   date_default_timezone_set("Europe/Bucharest");
   ini_set('user_agent', "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
   include "util.php";
