@@ -22,11 +22,15 @@ angular.module('fluxApp')
                     data.push(cat);
                 }
             }
-            Auth.categoriesUpdate(data);
+            Auth.categoriesUpdate(data).success(function(){
+                $('#notify').html("Noile categorii au fost salvate").show().fadeOut(2000);
+            });
         };
 
         $scope.updateFrequency = function() {
-            Auth.frequenciesUpdate($scope.frequency);
+            Auth.frequenciesUpdate($scope.frequency).success(function(){
+                $('#notify').html("Frecventa la care doriti sa fiti notificati a fost salvata").show().fadeOut(2000);
+            });;
         };
 
         $scope.changePassword = function(form) {

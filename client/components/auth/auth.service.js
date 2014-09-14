@@ -93,7 +93,7 @@ angular.module('fluxApp')
             },
 
             categoriesUpdate: function(categories) {
-                $http.post("/api/users/" + currentUser._id + "/categories", {categories: categories})
+                return $http.post("/api/users/" + currentUser._id + "/categories", {categories: categories})
                     .success(function() {
                         console.log("categoriile au fost salvate")
                     })
@@ -102,7 +102,7 @@ angular.module('fluxApp')
                     });
             },
             frequenciesUpdate: function(frequency) {
-                $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
+                return $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
                     .success(function() {
                         console.log("frecventa a fost salvata");
                     })
