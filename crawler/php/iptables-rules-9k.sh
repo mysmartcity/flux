@@ -22,6 +22,10 @@ $IPT -A INPUT -p tcp -i $IF -m state --state NEW -m recent --set
 $IPT -A INPUT -p tcp -i $IF -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
 
 # accept input for services
+$IPT -A INPUT -i $IF -p tcp --dport 21 -j ACCEPT
+$IPT -A INPUT -i $IF -p tcp --dport 22 -j ACCEPT
+$IPT -A INPUT -i $IF -p tcp --dport 25 -j ACCEPT
+$IPT -A INPUT -i $IF -p tcp --dport 80 -j ACCEPT
 $IPT -A INPUT -i $IF -p tcp --dport 9000 -j ACCEPT
 $IPT -A INPUT -i $IF -j DROP
 
