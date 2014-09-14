@@ -18,8 +18,10 @@ angular.module('fluxApp')
         $scope.updateFrequency = function(frequencies) {
             var data = [];
 
+            console.log(frequencies)
+
             for (var cat in frequencies) {
-                if (frequencies[cat] === true) {
+                if (frequencies[cat] === "true") {
                     data.push(cat);
                 }
             }
