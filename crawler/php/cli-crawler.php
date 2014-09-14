@@ -1,11 +1,8 @@
 <?php
+  error_reporting(E_ALL & ~E_NOTICE);
   date_default_timezone_set("Europe/Bucharest");
   ini_set('user_agent', "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
   include "util.php";
-
-  function trace($sData = "") {
-    echo "{$sData}\n";
-  }
 
   function crawl($sUrl, $sCategory) {
     global $oDb;
@@ -125,15 +122,16 @@
           //possible title candidate so we'll try to find a coresponding paragraph
           $iParentNodes = 0;
           $oParagraphs = $oHeader->parentNode;
-          if(!$oParagraphs) {
-            trace("*** IGNORING documentElement here?!");
-            return;
-          }
 
-          while($oParagraphs->getElementsByTagName("p")->length == 0 && $iParentNodes < 5) {
+          while($oParagraphs && $oParagraphs->getElementsByTagName("p")->length == 0 && $iParentNodes < 5) {
             //go back in the tree untill we find a common root containing at least one paragraph
             $oParagraphs = $oParagraphs->parentNode;
             $iParentNodes++;
+          }
+
+          if(!$oParagraphs) {
+            trace("*** IGNORING documentElement here?!");
+            continue 2;
           }
 
           foreach ($oParagraphs->getElementsByTagName("p") as $oParagraph) {
@@ -169,7 +167,7 @@
                 'url'       => $sSourceUrl,
                 'title'     => json_encode($sArticleTitle),
                 'content'   => json_encode($sArticleContent),
-                'msk'       => $aKeywords
+                'msk'       => json_encode(implode(",", $aKeywords))
               ]);
             }
 
@@ -203,9 +201,15 @@
           ]
         ],
         [
-          'category' => 'sanatate',
+          'category' => 'health',
           'sources' => [
-            'url' => 'http://www.ms.ro/'
+            'http://www.ms.ro/'
+          ]
+        ],
+        [
+          'category' => 'youth',
+          'sources' => [
+            'http://www.mts.ro/'
           ]
         ]
         //etc

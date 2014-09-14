@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/flux-dev'
+    uri: 'mongodb://localhost/flux'
   },
 
   seedDB: true

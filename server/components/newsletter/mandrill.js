@@ -45,20 +45,32 @@ if (frequency) {
     mongoose.connect(config.mongo.uri, config.mongo.options);
 
 
-    News.find(newsFilter).exec(function(err, news) {
+    News.find(newsFilter, function(err, news) {
         console.log(news);
         User.find({frequencies: frequency}, function (err, users) {
             for (var i=0 ; i< users.length; i++) {
                 var getTextBody = function() {
                     var result = "";
+                    var hello = "<p>Hello *|NAME|*,</p><br/><br/>" +
+                        "<p>Acestea sunt stirile la care te-ai abonat:</p>";
+                    var goodbye = "<br/><p>Cu stima, Echipa flux.gov.ro</p>";
+
+                    result += hello;
+
                     for ( var j=0; j< news.length; j++ ) {
                         // if the user is subscribed to this news category
                         if (users[i].categories.indexOf( news[j].category ) !== -1) {
                             result += "<a href='" + news[j].url + "'>" +
                                 "<h3>" + news[j].title + "<h3>" +
-                                "<p>" + news[j].content + "</p>" +
+                                "<p style='color: #000; text-decoration: none'>" + news[j].content + "</p>" +
                                 "</a>";
                         }
+                    }
+
+                    if (result.length !== hello.length ) {
+                        result += goodbye;
+                    } else {
+                        result = "";
                     }
                     return result;
                 };
@@ -76,7 +88,14 @@ if (frequency) {
                                 {"email": users[i].email}
                             ],
                             "subject": "Flux " + frequency + " Newsletter " + new Date(),
-                            "html": mailMessage
+                            "html": mailMessage,
+                            "merge_vars": [
+                                {"rcpt": users[i].email,
+                                    "vars": [
+                                        { "name": "NAME", "content": users[i].name}
+                                    ]
+                                }
+                            ]
                         }
                     };
 
@@ -92,10 +111,13 @@ if (frequency) {
                         }
                     );
                 }
-
             }
+            mongoose.disconnect(function() {
+                console.log("disconnect successful");
+            })
         });
 
         return;
     });
+
 }
