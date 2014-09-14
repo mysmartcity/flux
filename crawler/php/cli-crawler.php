@@ -187,7 +187,7 @@
   $oDb = $oMongo->selectDb("flux");
 
   //DEBUG: init the collections {
-    if(true == true) { //SET TO FALSE DURING PRODUCTION OTHERWISE THE COLLECTIONS WILL BE INITIALIZED
+    if(true == false) { //SET TO FALSE DURING PRODUCTION OTHERWISE THE COLLECTIONS WILL BE INITIALIZED
       $oDb->pages->drop();
       $oDb->news->drop();
       $oDb->sources->drop();
