@@ -24,8 +24,8 @@ program
 
 if (program.daily) {
     frequency = "daily";
-//    newsFilter = {date: new Date() }
-    newsFilter = {date: new Date(2014,1,4) }
+    newsFilter = {date: new Date() }
+//    newsFilter = {date: new Date(2014,1,4) }
 } else if (program.weekly) {
     frequency = "weekly";
     var oneWeekAgo = new Date();
