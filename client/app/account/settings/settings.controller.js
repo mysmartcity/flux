@@ -4,10 +4,14 @@ angular.module('fluxApp')
     .controller('SettingsCtrl', function ($scope, User, Auth) {
         $scope.errors = {};
         $scope.categorie = {};
+        $scope.frequency = 'daily';
         var i, currentUser = Auth.getCurrentUser();
 
         for (i in currentUser.categories){
             $scope.categorie[currentUser.categories[i]] = true;
+        }
+        for (i in currentUser.frequencies){
+            $scope.frequency = currentUser.frequencies[i];
         }
 
         $scope.updateCategories = function(categorie) {
@@ -21,18 +25,8 @@ angular.module('fluxApp')
             Auth.categoriesUpdate(data);
         };
 
-        $scope.updateFrequency = function(frequencies) {
-            var data = [];
-
-            console.log(frequencies)
-
-            for (var cat in frequencies) {
-                if (frequencies[cat] === "true") {
-                    data.push(cat);
-                }
-            }
-
-            Auth.frequenciesUpdate(data);
+        $scope.updateFrequency = function() {
+            Auth.frequenciesUpdate($scope.frequency);
         };
 
         $scope.changePassword = function(form) {
