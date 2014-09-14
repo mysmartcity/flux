@@ -3,6 +3,12 @@
 angular.module('fluxApp')
     .controller('SettingsCtrl', function ($scope, User, Auth) {
         $scope.errors = {};
+        $scope.categorie = {};
+        var i, currentUser = Auth.getCurrentUser();
+
+        for (i in currentUser.categories){
+            $scope.categorie[currentUser.categories[i]] = true;
+        }
 
         $scope.updateCategories = function(categorie) {
             var data = [];
@@ -12,7 +18,7 @@ angular.module('fluxApp')
                     data.push(cat);
                 }
             }
-            Auth.categoriesUpdate(cat);
+            Auth.categoriesUpdate(data);
         };
 
         $scope.updateFrequency = function(frequencies) {

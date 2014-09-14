@@ -101,7 +101,6 @@ angular.module('fluxApp')
                         console.error("Caegories have not been saved")
                     });
             },
-
             frequenciesUpdate: function(frequency) {
                 $http.post("/api/users/" + currentUser._id + "/frequencies", {frequencies: frequency})
                     .success(function() {
@@ -111,7 +110,6 @@ angular.module('fluxApp')
                         console.error("Frecventa nu a fost salvata");
                     });
             },
-
             /**
              * Gets all available info on authenticated user
              *
