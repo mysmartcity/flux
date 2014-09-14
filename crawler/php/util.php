@@ -1,4 +1,8 @@
 <?php
+  function trace($sData = "") {
+    echo "{$sData}\n";
+  }
+
   function keywordCountSort($aFirst, $aSecond) {
     return $aFirst[1] - $aSecond[1];
   }
@@ -27,7 +31,7 @@
     foreach($aKeywords as $aCurrentKeyword) {
       if($aCurrentKeyword[1] < $iMinimumWordOccurrences)
         break;
-      array_push($aFinalKeywords, json_encode($aCurrentKeyword[0]));
+      array_push($aFinalKeywords, $aCurrentKeyword[0]);
     }
 
     $aFinalKeywords = array_slice($aFinalKeywords, 0, 5, true);
