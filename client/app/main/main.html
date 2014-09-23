@@ -12,7 +12,7 @@
         <h1 class="main-page-header">
             Ultimele stiri:
         </h1>
-        <div class="new-articol" ng-repeat="new in news">
+        <div class="new-articol" ng-repeat="new in news" ng-click="openNewsURL(new.url)">
             <h2>{{ new.title }}</h2>
             <span>Cuvinte cheie: {{ new.msk }}</span>
             <p>{{ new.content }}</p>

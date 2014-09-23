@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('fluxApp')
-    .controller('SettingsCtrl', function ($scope, User, Auth) {
+angular.module('fluxApp').controller('SettingsCtrl', function ($scope, User, Auth) {
         $scope.errors = {};
         $scope.categorie = {};
-        $scope.frequency = 'daily';
+        $scope.frequency = '';
+        $scope.message = '';
+
         var i, currentUser = Auth.getCurrentUser();
 
         for (i in currentUser.categories){
@@ -14,23 +15,33 @@ angular.module('fluxApp')
             $scope.frequency = currentUser.frequencies[i];
         }
 
-        $scope.updateCategories = function(categorie) {
+        $scope.update = function() {
+            $scope.message = "";
+
             var data = [];
 
-            for (var cat in categorie) {
-                if (categorie[cat] === true) {
+            for (var cat in $scope.categorie) {
+                if ($scope.categorie[cat] === true) {
                     data.push(cat);
                 }
             }
-            Auth.categoriesUpdate(data).success(function(){
-                $('#notify').html("Noile categorii au fost salvate").show().fadeOut(2000);
-            });
-        };
+            if ( data.length > 0 ) {
+                Auth.categoriesUpdate(data)
+                    .success(function () {
+                        $scope.message += "Noile categorii au fost salvate! ";
+                    })
+                    .error(function() {
+                        $scope.message += "Noile categorii nu au fost salvate! ";
+                    });
+            }
 
-        $scope.updateFrequency = function() {
-            Auth.frequenciesUpdate([$scope.frequency]).success(function(){
-                $('#notify').html("Frecventa la care doriti sa fiti notificati a fost salvata").show().fadeOut(2000);
-            });;
+            Auth.frequenciesUpdate([$scope.frequency])
+                .success(function(){
+                    $scope.message += "Frecventa la care doriti sa fiti notificati a fost salvata!";
+                })
+                .error(function() {
+                    $scope.message += "Frecventa nu a putut fi salvata!";
+                });
         };
 
         $scope.changePassword = function(form) {
@@ -38,11 +49,11 @@ angular.module('fluxApp')
             if(form.$valid) {
                 Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
                     .then( function() {
-                        $scope.message = 'Password successfully changed.';
+                        $scope.message = 'Parola a fost schimbata cu succes!<br/>';
                     })
                     .catch( function() {
                         form.password.$setValidity('mongoose', false);
-                        $scope.errors.other = 'Incorrect password';
+                        $scope.errors.other = 'Parola Incorecta';
                         $scope.message = '';
                     });
             }
